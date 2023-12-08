@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="products"></div>
+
+    <script>
+        const carData = [
+            {
+                name: "Mitsubishi Lancer",
+                imageSrc: "lancer.jpg",
+                detailsLink: "car-detailslancer.html",
+                price: {
+                    original: 80000,
+                    discounted: 69528
+                },
+                specifications: {
+                    power: 190,
+                    fuel: "Petrol",
+                    year: 2008,
+                    condition: "Veículo Usado"
+                },
+                additionalInfo: {
+                    mileage: 130000,
+                    engineCapacity: 1800,
+                    transmission: "Manual"
+                }
+            },
+            {
+                name: "Lange Rover Evoque",
+                imageSrc: "evoque.jpg",
+                detailsLink: "car-detailsevoque.html",
+                price: {
+                    original: 450000,
+                    discounted: 367525
+                },
+                specifications: {
+                    power: 190,
+                    fuel: "Petrol",
+                    year: 2010,
+                    condition: "Veículo Usado"
+                },
+                additionalInfo: {
+                    mileage: 130000,
+                    engineCapacity: 1800,
+                    transmission: "Automático"
+                }
+            },
+            {
+                name: "Fiat Punto",
+                imageSrc: "punto.jpg",
+                detailsLink: "car-details.html",
+                price: {
+                    original: 48000,
+                    discounted: 40000
+                },
+                specifications: {
+                    power: 190,
+                    fuel: "Petrol",
+                    year: 2009,
+                    condition: "Veículo Usado"
+                },
+                additionalInfo: {
+                    mileage: 130000,
+                    engineCapacity: 1800,
+                    transmission: "Manual"
+                }
+            },
+            {
+                name: "Mini Cooper",
+                imageSrc: "minicooper.jpg",
+                detailsLink: "car-details.html",
+                price: {
+                    original: 300000,
+                    discounted: 243999
+                },
+                specifications: {
+                    power: 190,
+                    fuel: "Petrol",
+                    year: 2022,
+                    condition: "Semi Usado"
+                },
+                additionalInfo: {
+                    mileage: 130000,
+                    engineCapacity: 1800,
+                    transmission: "Automático"
+                }
+            },
+            {
+                name: "Jetta GLI",
+                imageSrc: "jettagli.jpg",
+                detailsLink: "car-details.html",
+                price: {
+                    original: 250000,
+                    discounted: 187990
+                },
+                specifications: {
+                    power: 190,
+                    fuel: "Petrol",
+                    year: 2008,
+                    condition: "Veículo Usado"
+                },
+                additionalInfo: {
+                    mileage: 130000,
+                    engineCapacity: 1800,
+                    transmission: "Automático"
+                }
+            },
+            {
+                name: "Hyunday HB20",
+                imageSrc: "hb20.jpg",
+                detailsLink: "car-details.html",
+                price: {
+                    original: 85000,
+                    discounted: 82290
+                },
+                specifications: {
+                    power: 190,
+                    fuel: "Petrol",
+                    year: 2008,
+                    condition: "Veículo Usado"
+                },
+                additionalInfo: {
+                    mileage: 130000,
+                    engineCapacity: 1800,
+                    transmission: "Manual"
+                }
+            }
+        ];
+
+        const productsContainer = document.getElementById('products');
+
+        carData.forEach((data, index) => {
+            const productItem = document.createElement('div');
+            productItem.classList.add('product-item');
+
+            const productLink = document.createElement('a');
+            productLink.href = data.detailsLink;
+
+            const productImage = document.createElement('img');
+            productImage.src = data.imageSrc;
+            productImage.alt = '';
+
+            productLink.appendChild(productImage);
+            productItem.appendChild(productLink);
+
+            const downContent = document.createElement('div');
+            downContent.classList.add('down-content');
+
+            const productNameLink = document.createElement('a');
+            productNameLink.href = data.detailsLink;
+
+            const productName = document.createElement('h4');
+            productName.innerText = data.name;
+            productNameLink.appendChild(productName);
+
+            const price = document.createElement('h6');
+            const discountedPrice = document.createElement('small');
+            discountedPrice.innerHTML = `<del>${data.price.discounted}</del>`;
+            price.appendChild(discountedPrice);
+            price.innerHTML += ` ${data.price.original}`;
+
+            const specifications = document.createElement('p');
+            specifications.innerHTML = `${data.specifications.power} / ${data.specifications.fuel} / ${data.specifications.year} / ${data.specifications.condition}`;
+
+            const additionalInfo = document.createElement('small');
+            additionalInfo.innerHTML = `<strong title="Author"><i class="fa fa-dashboard"></i> ${data.additionalInfo.mileage}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                   <strong title="Author"><i class="fa fa-cube"></i> ${data.additionalInfo.engineCapacity}</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                                   <strong title="Views"><i class="fa fa-cog"></i> ${data.additionalInfo.transmission}</strong>`;
+
+            downContent.appendChild(productNameLink);
+            downContent.appendChild(price);
+            downContent.appendChild(specifications);
+            downContent.appendChild(additionalInfo);
+
+            productItem.appendChild(downContent);
+            productsContainer.appendChild(productItem);
+        });
+
+    </script>
+
+</body>
+
+</html>
